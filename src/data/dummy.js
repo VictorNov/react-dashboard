@@ -26,7 +26,7 @@ import product8 from './product8.jpg';
 export const gridOrderImage = (props) => (
   <div>
     <img
-      className="rounded-xl h-20 md:ml-3"
+      className="rounded-xl h-20 w-20 md:ml-3"
       src={props.ProductImage}
       alt="order-item"
     />
@@ -392,41 +392,48 @@ export const LinePrimaryYAxis = {
 };
 
 export const customersGrid = [
-  { type: 'checkbox', width: '50' },
-  { headerText: 'Name',
-    width: '150',
+  { type: 'checkbox',
+    width: '60',
+    allowResizing: false,
+    textAlign: 'Center'
+  },
+  { field: 'Name',
+    headerText: 'Покупатель',
+    width: '200',
     template: customerGridImage,
-    textAlign: 'Center' },
-  { field: 'ProjectName',
-    headerText: 'Project Name',
-    width: '150',
-    textAlign: 'Center' },
-  { field: 'Status',
-    headerText: 'Status',
-    width: '130',
-    format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus },
-  {
-    field: 'Weeks',
-    headerText: 'Weeks',
-    width: '100',
-    format: 'C2',
-    textAlign: 'Center' },
+    allowEditing: false,
+    allowFiltering: false,
+    allowSorting: false,
+    allowResizing: false
+  },
+  { field: 'ProjectName',
+    headerText: 'Название проекта',
+    width: '200',
+    textAlign: 'Center',
+    filter: { type: 'CheckBox' }
+  },
+  { field: 'Status',
+    headerText: 'Статус',
+    width: '130',
+    textAlign: 'Center',
+    template: customerGridStatus,
+    filter: { type: 'CheckBox' }
+  },
   { field: 'Budget',
-    headerText: 'Budget',
-    width: '100',
-    format: 'yMd',
-    textAlign: 'Center' },
-
+    headerText: 'Бюджет',
+    width: '140',
+    textAlign: 'Center'
+  },
   { field: 'Location',
-    headerText: 'Location',
-    width: '150',
-    textAlign: 'Center' },
-
+    headerText: 'Локация',
+    width: '140',
+    textAlign: 'Center',
+    filter: { type: 'CheckBox' }
+  },
   { field: 'CustomerID',
-    headerText: 'Customer ID',
-    width: '120',
+    headerText: 'ID покупателя',
+    width: '160',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
@@ -434,7 +441,7 @@ export const customersGrid = [
 ];
 
 export const employeesGrid = [
-  { headerText: 'Employee',
+  { headerText: 'Сотрудник',
     width: '150',
     template: gridEmployeeProfile,
     textAlign: 'Center' },
@@ -444,114 +451,130 @@ export const employeesGrid = [
     textAlign: 'Center',
   },
   { field: 'Title',
-    headerText: 'Designation',
+    headerText: 'Отдел',
     width: '170',
     textAlign: 'Center',
   },
-  { headerText: 'Country',
+  { headerText: 'Страна',
     width: '120',
     textAlign: 'Center',
     template: gridEmployeeCountry },
 
   { field: 'HireDate',
-    headerText: 'Hire Date',
+    headerText: 'Дата найма',
     width: '135',
     format: 'yMd',
     textAlign: 'Center' },
 
   { field: 'ReportsTo',
-    headerText: 'Reports To',
+    headerText: 'Руководитель',
     width: '120',
     textAlign: 'Center' },
   { field: 'EmployeeID',
-    headerText: 'Employee ID',
+    headerText: 'ID сотрудника',
     width: '125',
     textAlign: 'Center' },
 ];
 
 export const links = [
   {
-    title: 'Dashboard',
+    title: 'Информация',
     links: [
       {
-        name: 'ecommerce',
+        name: 'Коммерция',
+        link: 'ecommerce',
         icon: <FiShoppingBag />,
       },
     ],
   },
 
   {
-    title: 'Pages',
+    title: 'Страницы',
     links: [
       {
-        name: 'orders',
+        name: 'Заказы',
+        link: 'orders',
         icon: <AiOutlineShoppingCart />,
       },
       {
-        name: 'employees',
+        name: 'Сотрудники',
+        link: 'employees',
         icon: <IoMdContacts />,
       },
       {
-        name: 'customers',
+        name: 'Покупатели',
+        link: 'customers',
         icon: <RiContactsLine />,
       },
     ],
   },
   {
-    title: 'Apps',
+    title: 'Приложения',
     links: [
       {
-        name: 'calendar',
+        name: 'Календарь',
+        link: 'calendar',
         icon: <AiOutlineCalendar />,
       },
       {
-        name: 'kanban',
+        name: 'Канбан',
+        link: 'kanban',
         icon: <BsKanban />,
       },
       {
-        name: 'editor',
+        name: 'Редактор',
+        link: 'editor',
         icon: <FiEdit />,
       },
       {
-        name: 'color-picker',
+        name: 'Выбор цвета',
+        link: 'color-picker',
         icon: <BiColorFill />,
       },
     ],
   },
   {
-    title: 'Charts',
+    title: 'Графики',
     links: [
       {
-        name: 'line',
+        name: 'Линии',
+        link: 'line',
         icon: <AiOutlineStock />,
       },
       {
-        name: 'area',
+        name: 'Зоны',
+        link: 'area',
         icon: <AiOutlineAreaChart />,
       },
 
       {
-        name: 'bar',
+        name: 'Столбцы',
+        link: 'bar',
         icon: <AiOutlineBarChart />,
       },
       {
-        name: 'pie',
+        name: 'Круговая диаграмма',
+        link: 'pie',
         icon: <FiPieChart />,
       },
       {
-        name: 'financial',
+        name: 'Финансы',
+        link: 'financial',
         icon: <RiStockLine />,
       },
       {
-        name: 'color-mapping',
+        name: 'Цветовой мэппинг',
+        link: 'color-mapping',
         icon: <BsBarChart />,
       },
       {
-        name: 'pyramid',
+        name: 'Пирамида',
+        link: 'pyramid',
         icon: <GiLouvrePyramid />,
       },
       {
         name: 'stacked',
+        link: 'stacked',
         icon: <AiOutlineBarChart />,
       },
     ],
@@ -618,7 +641,7 @@ export const earningData = [
     icon: <MdOutlineSupervisorAccount />,
     amount: '39,354',
     percentage: '-4%',
-    title: 'Customers',
+    title: 'Покупатели',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
     pcColor: 'red-600',
@@ -627,7 +650,7 @@ export const earningData = [
     icon: <BsBoxSeam />,
     amount: '4,396',
     percentage: '+23%',
-    title: 'Products',
+    title: 'Товары',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',
     pcColor: 'green-600',
@@ -636,17 +659,16 @@ export const earningData = [
     icon: <FiBarChart />,
     amount: '423,39',
     percentage: '+38%',
-    title: 'Sales',
+    title: 'Продажи',
     iconColor: 'rgb(228, 106, 118)',
     iconBg: 'rgb(255, 244, 229)',
-
     pcColor: 'green-600',
   },
   {
     icon: <HiOutlineRefresh />,
     amount: '39,354',
     percentage: '-12%',
-    title: 'Refunds',
+    title: 'Возвраты',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
     pcColor: 'red-600',
@@ -872,50 +894,64 @@ export const userProfileData = [
 
 export const ordersGrid = [
   {
-    headerText: 'Image',
+    headerText: 'Изображение',
     template: gridOrderImage,
     textAlign: 'Center',
-    width: '120',
+    width: '150',
+    allowFiltering: false,
+    allowEditing: false
   },
   {
     field: 'OrderItems',
-    headerText: 'Item',
+    headerText: 'Товар',
     width: '150',
     editType: 'dropdownedit',
     textAlign: 'Center',
+    filter: {
+      type: 'CheckBox'
+    }
   },
   { field: 'CustomerName',
-    headerText: 'Customer Name',
+    headerText: 'Покупатель',
     width: '150',
     textAlign: 'Center',
   },
   {
     field: 'TotalAmount',
-    headerText: 'Total Amount',
+    headerText: 'Итог',
     format: 'C2',
     textAlign: 'Center',
     editType: 'numericedit',
     width: '150',
+    allowFiltering: false
   },
   {
-    headerText: 'Status',
+    headerText: 'Статус',
     template: gridOrderStatus,
-    field: 'OrderItems',
+    field: 'Status',
     textAlign: 'Center',
+    editType: 'dropdownedit',
     width: '120',
+    filter: {
+      type: 'CheckBox'
+    }
   },
   {
     field: 'OrderID',
-    headerText: 'Order ID',
+    headerText: 'ID заказа',
     width: '120',
     textAlign: 'Center',
+    isPrimaryKey: true
   },
 
   {
     field: 'Location',
-    headerText: 'Location',
+    headerText: 'Страна',
     width: '150',
     textAlign: 'Center',
+    filter: {
+      type: 'CheckBox'
+    }
   },
 ];
 
@@ -3156,22 +3192,22 @@ export const ecomPieChartData = [
 
 export const stackedChartData = [
   [
-    { x: 'Jan', y: 111.1 },
-    { x: 'Feb', y: 127.3 },
-    { x: 'Mar', y: 143.4 },
-    { x: 'Apr', y: 159.9 },
-    { x: 'May', y: 159.9 },
-    { x: 'Jun', y: 159.9 },
-    { x: 'July', y: 159.9 },
+    { x: 'Январь', y: 111.1 },
+    { x: 'Февраль', y: 127.3 },
+    { x: 'Март', y: 143.4 },
+    { x: 'Апрель', y: 159.9 },
+    { x: 'Май', y: 121.3 },
+    { x: 'Июнь', y: 206.5 },
+    { x: 'Июль', y: 173.4 },
   ],
   [
-    { x: 'Jan', y: 111.1 },
-    { x: 'Feb', y: 127.3 },
-    { x: 'Mar', y: 143.4 },
-    { x: 'Apr', y: 159.9 },
-    { x: 'May', y: 159.9 },
-    { x: 'Jun', y: 159.9 },
-    { x: 'July', y: 159.9 },
+    { x: 'Январь', y: 26.1 },
+    { x: 'Февраль', y: 96.3 },
+    { x: 'Март', y: 121.4 },
+    { x: 'Апрель', y: 127.9 },
+    { x: 'Май', y: 111.9 },
+    { x: 'Июнь', y: 59.9 },
+    { x: 'Июль', y: 159.9 },
   ],
 ];
 
@@ -3180,18 +3216,18 @@ export const stackedCustomSeries = [
   { dataSource: stackedChartData[0],
     xName: 'x',
     yName: 'y',
-    name: 'Budget',
+    name: 'Бюджет',
     type: 'StackingColumn',
-    background: 'blue',
+    fill: '#4ADE80',
 
   },
 
   { dataSource: stackedChartData[1],
     xName: 'x',
     yName: 'y',
-    name: 'Expense',
+    name: 'Расход',
     type: 'StackingColumn',
-    background: 'red',
+    fill: '#4B5563',
 
   },
 
@@ -3210,9 +3246,9 @@ export const stackedPrimaryXAxis = {
 
 export const stackedPrimaryYAxis = {
   lineStyle: { width: 0 },
-  minimum: 100,
+  minimum: 0,
   maximum: 400,
-  interval: 100,
+  interval: 50,
   majorTickLines: { width: 0 },
   majorGridLines: { width: 1 },
   minorGridLines: { width: 1 },

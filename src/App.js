@@ -9,8 +9,10 @@ import { ECommerce, Area, Calendar, Bar, ColorMapping, ColorPicker,
   Pyramid, Line, Stacked } from './pages'
 import './App.css'
 
+import { useStateContext } from './contexts/ContextProvider'
+
 const App = () => {
-  const activeMenu = true
+  const { activeMenu } = useStateContext()
 
   return (
     <BrowserRouter>
@@ -20,7 +22,14 @@ const App = () => {
         <div className='fixed right-4 bottom-4'
              style={{ zIndex: '1000' }}
         >
-          <TooltipComponent content='Settings' position='top'>
+          <TooltipComponent
+            content='Settings'
+            position='TopCenter'
+            animation={{
+              open: { effect: 'FadeIn', duration: 500, delay: 500 },
+              close: { effect: 'FadeOut', duration: 500, delay: 500 }
+            }}
+          >
             <button
               type='button'
               className='text-3xl p-3
@@ -51,48 +60,48 @@ const App = () => {
           </div>
         )}
 
-        {/* Навигационная панель */}
         <div className={
           `dark:bg-main-bg bg-main-bg min-h-screen w-full
           ${activeMenu ? ' md:ml-72' : ' flex-2'}`
         }>
+
+          {/* Навигационная панель */}
           <div className='fixed md:static bg-main-bg
           dark:bg-main-dark-bg navbar w-full'
           >
             <Navbar />
           </div>
+
+          {/* Основной контент страницы */}
+          <div>
+            <Routes>
+              {/* Dashboard */}
+              <Route path='/' element={ <ECommerce /> } />
+              <Route path='/ecommerce' element={ <ECommerce /> } />
+
+              {/* Страницы */}
+              <Route path='/orders' element={ <Orders /> } />
+              <Route path='/employees' element={ <Employees /> } />
+              <Route path='/customers' element={ <Customers /> } />
+
+              {/* Приложения */}
+              <Route path='/kanban' element={ <Kanban /> } />
+              <Route path='/editor' element={ <Editor /> } />
+              <Route path='/calendar' element={ <Calendar /> } />
+              <Route path='/color-picker' element={ <ColorPicker /> } />
+
+              {/* Графики */}
+              <Route path='/line' element={ <Line /> } />
+              <Route path='/area' element={ <Area /> } />
+              <Route path='/bar' element={ <Bar /> } />
+              <Route path='/pie' element={ <Pie /> } />
+              <Route path='/financial' element={ <Financial /> } />
+              <Route path='/color-mapping' element={ <ColorMapping /> } />
+              <Route path='/pyramid' element={ <Pyramid /> } />
+              <Route path='/stacked' element={ <Stacked /> } />
+            </Routes>
+          </div>
         </div>
-
-        {/* Основной контент страницы */}
-        <div>
-          <Routes>
-            {/* Dashboard */}
-            <Route path='/' element={ <ECommerce /> } />
-            <Route path='/ecommerce' element={ <ECommerce /> } />
-
-            {/* Страницы */}
-            <Route path='/orders' element={ <Orders /> } />
-            <Route path='/employees' element={ <Employees /> } />
-            <Route path='/customers' element={ <Customers /> } />
-
-            {/* Приложения */}
-            <Route path='/kanban' element={ <Kanban /> } />
-            <Route path='/editor' element={ <Editor /> } />
-            <Route path='/calendar' element={ <Calendar /> } />
-            <Route path='/color-picker' element={ <ColorPicker /> } />
-
-            {/* Графики */}
-            <Route path='/line' element={ <Line /> } />
-            <Route path='/area' element={ <Area /> } />
-            <Route path='/bar' element={ <Bar /> } />
-            <Route path='/pie' element={ <Pie /> } />
-            <Route path='/financial' element={ <Financial /> } />
-            <Route path='/color-mapping' element={ <ColorMapping /> } />
-            <Route path='/pyramid' element={ <Pyramid /> } />
-            <Route path='/stacked' element={ <Stacked /> } />
-          </Routes>
-        </div>
-
       </div>
     </BrowserRouter>
   )
