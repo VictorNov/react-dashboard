@@ -17,6 +17,8 @@ const Stacked = ({ width, height }) => {
       primaryXAxis={ stackedPrimaryXAxis }
       primaryYAxis={ stackedPrimaryYAxis }
       chartArea={{ border: { width: 0 } }}
+      margin={{ left: 20, right: 40, top: 40, bottom: 20 }}
+      className='rounded-2xl'
     >
       <Inject services={[StackingColumnSeries, Category, Tooltip, Legend]} />
       <SeriesCollectionDirective>
